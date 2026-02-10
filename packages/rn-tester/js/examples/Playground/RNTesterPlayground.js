@@ -8,18 +8,20 @@
  * @format
  */
 
-import type {RNTesterModuleExample} from '../../types/RNTesterTypes';
+import type { RNTesterModuleExample } from '../../types/RNTesterTypes';
 
 import RNTesterText from '../../components/RNTesterText';
 import * as React from 'react';
-import {StyleSheet, View} from 'react-native';
+import { StyleSheet, View, Text, Pressable } from 'react-native';
 
 function Playground() {
+  const [visible, setVisible] = React.useState(true);
   return (
     <View style={styles.container}>
-      <RNTesterText>
-        Edit "RNTesterPlayground.js" to change this file
-      </RNTesterText>
+      <Pressable style={styles.button} onPress={() => setVisible(v => !v)}>
+        <Text>Click Me</Text>
+      </Pressable>
+      {visible && <Text>Hello World</Text>}
     </View>
   );
 }
@@ -27,6 +29,11 @@ function Playground() {
 const styles = StyleSheet.create({
   container: {
     padding: 10,
+  },
+  button: {
+    cursor: 'pointer',
+    backgroundColor: 'salmon',
+    width: 200,
   },
 });
 
